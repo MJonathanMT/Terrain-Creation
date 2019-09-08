@@ -17,7 +17,7 @@ public class SunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.localRotation *= Quaternion.AngleAxis(Time.deltaTime * spinSpeed, new Vector3(1.0f, 0.0f, 0.0f));
+        this.transform.localRotation *= Quaternion.AngleAxis(Time.deltaTime * spinSpeed, new Vector3(0.0f, 0.0f, -1.0f));
 		//this.transform.localPosition += new Vector3(0.0f, 0.0f, Time.deltaTime * moveSpeed * dir);
 		
 		// if (this.transform.localPosition.z < 0.0f) {

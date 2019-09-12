@@ -5,11 +5,16 @@ using UnityEngine;
 public class DiamondSquareScript : MonoBehaviour
 {
 
+    // Number of faces
     public int mDivisions;
+    // Size of the terrain
     public float mSize;
+    // Max height for terrain
     public float heightMap;
 
+    // Vertices for terrain
     Vector3[]  mVerts;
+    // Vertex counter
     int mVertCount;
 
 
@@ -20,13 +25,18 @@ public class DiamondSquareScript : MonoBehaviour
     }
 
     void createTerrain() {
-
+        
+        // Array of width and height
         mVertCount = (mDivisions+1)*(mDivisions+1);
+        // Initialize array
         mVerts = new Vector3[mVertCount];
         Vector2[] uvs = new Vector2[mVertCount];
+        // Number of triangles
         int[] tris = new int[mDivisions*mDivisions*6];
 
+        // Half the size of terrain
         float halfSize = mSize * 0.5f;
+        // Size of a square
         float divisionSize = mSize/mDivisions;
 
         Mesh mesh = new Mesh();
@@ -36,6 +46,7 @@ public class DiamondSquareScript : MonoBehaviour
 
         for (int i = 0; i <= mDivisions; i++) {
             for (int j = 0; j <= mDivisions; j++) {
+                // Vertex position
                 mVerts[i*(mDivisions+1)+j] = new Vector3(-halfSize+j*divisionSize, 0.0f, halfSize-i*divisionSize);
                 uvs[i*(mDivisions+1)+j] = new Vector2((float)i/mDivisions, (float)j/mDivisions);
 
@@ -57,10 +68,10 @@ public class DiamondSquareScript : MonoBehaviour
             }
         }
 
-        mVerts[0].y = Random.Range(-heightMap, heightMap);
-        mVerts[mDivisions].y = Random.Range(-heightMap, heightMap);
-        mVerts[mVerts.Length-1].y = Random.Range(-heightMap, heightMap);
-        mVerts[mVerts.Length-1-mDivisions].y = Random.Range(-heightMap, heightMap);
+        mVerts[0].y = Random.Range(-heightMap * 1.0f, heightMap);
+        mVerts[mDivisions].y = Random.Range(-heightMap * 0.5f, heightMap);
+        mVerts[mVerts.Length-1].y = Random.Range(-heightMap * 0.5f, heightMap);
+        mVerts[mVerts.Length-1-mDivisions].y = Random.Range(-heightMap * 0.5f, heightMap);
 
         int iterations = (int)Mathf.Log(mDivisions, 2);
         int numSquares = 1;

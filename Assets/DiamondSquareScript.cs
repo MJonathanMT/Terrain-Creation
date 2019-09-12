@@ -12,6 +12,7 @@ public class DiamondSquareScript : MonoBehaviour
     Vector3[]  mVerts;
     int mVertCount;
 
+    public Mesh mesh;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +30,7 @@ public class DiamondSquareScript : MonoBehaviour
         float halfSize = mSize * 0.5f;
         float divisionSize = mSize/mDivisions;
 
-        Mesh mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = mesh;
+        mesh = GetComponent<MeshFilter>().mesh;
 
         int triOffset = 0;
 
@@ -88,6 +88,7 @@ public class DiamondSquareScript : MonoBehaviour
 
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
+        gameObject.AddComponent<MeshCollider>();
     }
 
     void DiamondSquare(int row, int col, int size, float offset) {

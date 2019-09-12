@@ -56,7 +56,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\DiamondSquareScript.cs" />
+     <Compile Include="Assets\LightingScript.cs" />
      <Compile Include="Assets\PlayerController.cs" />
+     <Compile Include="Assets\SunScript.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/Graphics and Interaction Project/COMP30019-Assignment1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
